@@ -9,6 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class SearchProductType extends AbstractType
 {
@@ -20,12 +21,12 @@ class SearchProductType extends AbstractType
                 'label' => 'Filtrer par nom de produit',
                 'required' => false,
             ])
-            ->add('filterByCategory', EntityType::class, [
-                'label' => 'Filtrer par catégorie',
-                'placeholder' => '-- Choisir --',
-                'class' => Category::class,
-                'required' => false,
+            ->add('recherche', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-primary'
+                ]
             ])
+            
         ;
 
     }

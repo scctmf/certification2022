@@ -6,25 +6,10 @@
         <div class="row">
             <div class="col-12 mt-3 d-flex align-items-center justify-content-between">
                 <h1>Liste des produits</h1>
-                <a class="btn btn-primary" href="{{ path('product_new') }}">Ajouter</a>
+                <a class="btn btn-primary border-0 text-white bg-dark" href="{{ path('product_new') }}">Ajouter</a>
             </div>
 
-            <div class="col-12 mt-3">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Formulaire de recherche</h3>
-                    </div>
-                    <div class="card-body">
-                        {{ form_start(form)}}
-                        
-                        {{ form_widget(form)}}
-
-                        <button class="btn btn-info mt-3" type="submit">Rechercher</button>
-                        
-                        {{ form_end(form)}}
-                    </div>
-                </div>
-            </div>
+            
 
             <div class="navigation py-2">
                 {{ knp_pagination_render(products) }}
@@ -39,7 +24,7 @@
                             <h5 class="text-center">{{ product.name }}</h5>
                         </div>
                         <div class="card-footer">
-                            <a class="btn btn-info w-100" href="{{ path('product_edit',{'id' : product.id }) }}">Modifier</a>
+                            <a class="btn btn-info border-0 text-white bg-dark w-100" href="{{ path('product_edit',{'id' : product.id }) }}">Modifier</a>
                         </div>
                     </div>
                 </div>

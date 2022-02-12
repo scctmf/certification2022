@@ -1,5 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-black bg-black">
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
   <div class="container-fluid">
+  <img src="{{ asset('uploads/images/logo.png') }}" height="50px" width="100px" alt="book">
     <a class="navbar-brand" href="#">Administration</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -21,15 +22,12 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ path('customer_home')  }}">Revenir vers le site</a>
         </li>
-        <div class="">
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="" type="submit">Search</button>
-            </form>
-        </div>
+        {% include "search/_searchbar.html.twig" %}
+
         <li class="nav-item">
           <a class="nav-link" href="{{ path('app_logout')  }}">Se déconnecter</a>
         </li>
+      
       </ul>
     </div>
   </div>

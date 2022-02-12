@@ -1,3 +1,25 @@
+#divHome
+{
+    /*background-image: url("{{ asset('../../uploads/images/1.png') }}");*/
+    background-image: url("../../uploads/images/7.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 85vh;
+}
+#bibody
+{
+    /* background-image: url("{{ asset('../../uploads/images/1.png') }}"); */
+    background-image: url("../../uploads/images/paper.png");
+    background-size: cover;
+    height: 200vh;
+}
+
+
+.bord{
+    border-color: black;
+    padding: 10px 100px 10px 100px;
+}
+
 .imageCard
 {
     height: 250px;
@@ -21,12 +43,18 @@
     width: 300px;
 }
 
+.pad{
+    padding-left: 500px;
+}
+
 @media screen and (max-width:700px)
 {
     .buttonCarroussel
     {
         width: 200px;
     }
+
+   
 }
 
 .footer

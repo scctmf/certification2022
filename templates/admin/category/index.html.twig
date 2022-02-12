@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-12 mt-3 d-flex align-items-center justify-content-between">
                 <h1>Liste des catégories</h1>
-                <a class="btn btn-primary" href="{{ path('category_new') }}">Ajouter</a>
+                <a class="btn btn-primary border-0 text-white bg-dark" href="{{ path('category_new') }}">Ajouter</a>
             </div>
             {% for category in categories %}
                 <div class="col-sm-12 col-md-6 col-lg-4 mt-3">
@@ -18,7 +18,7 @@
                             <h5 class="text-center">{{ category.name }}</h5>
                         </div>
                         <div class="card-footer">
-                            <a class="btn btn-info w-100" href="{{ path('category_edit',{'id' : category.id }) }}">Modifier</a>
+                            <a class="btn btn-info border-0 text-white bg-dark w-100" href="{{ path('category_edit',{'id' : category.id }) }}">Modifier</a>
                         </div>
                     </div>
                 </div>

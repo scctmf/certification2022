@@ -24,7 +24,9 @@ class CategoryController extends AbstractController
      */
     public function index(CategoryRepository $categoryRepository): Response
     {
+        //envoie dans la vue les catégories qu'on vient de récupérer
         return $this->render('admin/category/index.html.twig', [
+            //Fait appel à la base de données et de récupère la liste des catégories.
             'categories' => $categoryRepository->findAll(),
         ]);
     }
@@ -36,6 +38,7 @@ class CategoryController extends AbstractController
                         HandleImageService $handleImageService): Response
     {
         $category = new Category();
+        //pour créer le formulaire
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
@@ -56,7 +59,7 @@ class CategoryController extends AbstractController
 
             return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);
         }
-
+        //envoie dans le formulaire les catégories qu'on vient de récupérer    
         return $this->renderForm('admin/category/new.html.twig', [
             'category' => $category,
             'form' => $form,

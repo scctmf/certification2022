@@ -41,9 +41,26 @@
                 {% include "customer/shared/_messages_flash.html.twig" %}
             </div>
             <div class="col-12">
-                <h3 class="text-center">Les derniers produits</h3>
+                <h3 class="text-center mt-3 ">FANTASTIQUE</h3>
             </div>
-            {% for product in products %}
+
+            <div class="d-flex justify-content-between bd-highlight mt-5">
+            {% for category in categoryRepository.findAll() %}
+
+                <a class="btn btn-link-dark card text-white bg-dark w-100 mt-5  mx-2" href="{{ path('customer_category_show',{'id' : category.id}) }}">{{ category.name }}</a>
+
+        {% endfor %}
+            </div>
+
+            {% for category in categoryRepository.findAll() %}
+
+            <div class="col-12 text-center">
+                <a class="btn btn-link-dark " href="{{ path('customer_category_show',{'id' : category.id}) }}"></a>
+            </div>
+
+        
+
+            {% for product in category.products %}
                 <div class="col-sm-12 col-md-6 col-lg-4 mt-3">
                     <div class="card cardProduct">
                         <div class="card-header">
@@ -54,11 +71,15 @@
                             <p class="text-center text-primary">{{ product.price | euroPrice }}</p>
                         </div>
                         <div class="card-footer">
-                        <a class="btn btn-info w-100" href="{{ path('customer_product_show',{'id' : product.id }) }}">Consulter</a>
+                        <a class="btn btn-info border-0 text-white bg-dark w-100" href="{{ path('customer_product_show',{'id' : product.id }) }}">Consulter</a>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             {% endfor %}
         </div>
     </div>
+
+       
+
 {% endblock %}
