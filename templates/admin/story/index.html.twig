@@ -1,0 +1,26 @@
+{% extends "admin/base_admin.html.twig" %}
+
+{% block body %}
+
+  <div class="container">
+        <div class="row">
+            <div class="col-12 mt-3 d-flex align-items-center justify-content-between">
+                <h1>Liste des histoires</h1>
+                <a class="btn btn-primary border-0 text-white bg-dark" href="{{ path('story_new') }}">Ajouter</a>
+            </div>
+            {% for stories in story %}
+                <div class="col-sm-12 col-md-6 col-lg-4 mt-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="text-center">{{ stories.content }}</h5>
+                        </div>
+                        <div class="card-footer">
+                            <a class="btn btn-info border-0 text-white bg-dark w-100" href="{{ path('story_edit',{'id' : stories.id }) }}">Modifier</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    
+    </div>
+{% endblock %}

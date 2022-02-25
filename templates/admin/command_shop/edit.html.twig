@@ -1,0 +1,15 @@
+{% extends "customer/base_customer.html.twig" %}
+
+{% block title %}
+	Edit commandes
+{% endblock %}
+
+{% block body %}
+    <h1>Edit CommandShop</h1>
+
+    {{ include('admin/command_shop/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('command_shop_index') }}">back to list</a>
+
+    {{ include('admin/command_shop/_delete_form.html.twig') }}
+{% endblock %}

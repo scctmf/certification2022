@@ -1,0 +1,13 @@
+{% extends "customer/base_customer.html.twig" %}
+
+{% block title %}
+	Nouvelles commandes
+{% endblock %}
+
+{% block body %}
+    <h1>Create new CommandShop</h1>
+
+    {{ include('admin/command_shop/_form.html.twig') }}
+
+    <a href="{{ path('command_shop_index') }}">back to list</a>
+{% endblock %}

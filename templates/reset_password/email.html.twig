@@ -1,9 +1,33 @@
-<h1>Hi!</h1>
 
-<p>To reset your password, please visit the following link</p>
+<div class="container mt-5">
 
-<a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
+        <div class="row">
 
-<p>This link will expire in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+            <div class="col-lg-6 mt-5">
+            
+                        <img src="{{ asset('uploads/images/6.jpg') }}" alt="">
+            </div>
 
-<p>Cheers!</p>
+            <div class="col-sm-12 col-md-12 col-lg-6 mt-5 px-5 mb-5">
+                
+                <div class="card my-5">
+                        
+                    <div class="card-body mx-5 my-5">
+                        <h1>Hi!</h1>
+
+                        <p>To reset your password, please visit the following link</p>
+
+                        <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
+
+                        <p>This link will expire in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+
+                        <p>Cheers!</p>
+
+                    </div>   
+                </div>
+            </div>
+                
+        </div>
+
+    </div>
+</div>

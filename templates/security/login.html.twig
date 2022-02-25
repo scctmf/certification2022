@@ -3,9 +3,27 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<div class="container py-5">
 
-    <form method="post">
+<div class="container mt-5">
+
+    <div class="row">
+
+        
+
+        <div class="col-lg-6 mt-5 pe-5">
+           
+ 
+                    <img src="{{ asset('uploads/images/6.jpg') }}" alt="">
+                
+          
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-6 mt-5 px-5 mb-5">
+            
+                <div class="card">
+                    
+                    <div class="card-body">
+                     <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
@@ -16,7 +34,7 @@
             </div>
         {% endif %}
 
-        <h1 class="h3 mb-3 font-weight-normal">Page de connexion</h1>
+        <h1 class="h3 mb-3 font-weight-normal text-center">Page de connexion</h1>
         <label for="inputEmail">Email</label>
         <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
         <label for="inputPassword">Mot de passe</label>
@@ -40,7 +58,7 @@
         <button class="btn btn-lg btn-primary mt-3 border-0 text-white bg-dark" type="submit">
             Se connecter
         </button>
-        <a class="btn btn-link border-0 text-white bg-dark" href="{{ path('app_forgot_password_request') }}">mot de passe oublié</a>
+        <a class="btn btn-link border-0 text-dark" href="{{ path('app_forgot_password_request') }}">mot de passe oublié</a>
     </form><br>
 
     <h2 class="h2 mb-3 font-weight-normal">INSCRIVEZ-VOUS</h1>
@@ -51,6 +69,13 @@
     
 </div>
 
+                    </div>
+                </div>
+ 
+        </div>
+
+    </div>
+</div>
 
 {% endblock %}
 

@@ -1,0 +1,30 @@
+{% extends "admin/base_admin.html.twig" %}
+
+{% block body %}
+    <h1>HISTOIRES</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ story.id }}</td>
+            </tr>
+            <tr>
+                <th>Date de création</th>
+                <td>{{ story.createdAt }}</td>
+            </tr>
+            <tr>
+                <th>Histoires</th>
+                <td>{{ story.content }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('story_index') }}">back to list</a>
+
+    <a href="{{ path('story_edit', {'id': story.id}) }}">edit</a>
+
+    {{ include('story/_delete_form.html.twig') }}
+
+{% endblock %}
+  

@@ -11,7 +11,7 @@
     /* background-image: url("{{ asset('../../uploads/images/1.png') }}"); */
     background-image: url("../../uploads/images/paper.png");
     background-size: cover;
-    height: 200vh;
+   
 }
 
 
@@ -44,6 +44,9 @@
 }
 
 .pad{
+    padding-left: 350px;
+}
+.pad1{
     padding-left: 500px;
 }
 

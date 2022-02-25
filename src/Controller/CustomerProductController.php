@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\CategoryRepository;
+use App\Repository\StoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -41,6 +42,23 @@ class CustomerProductController extends AbstractController
 
         return $this->render("customer/category_show.html.twig",[
             'category' => $category
+        ]);
+    }
+
+    /**
+     * @Route("customer/story/{id}", name="customer_story_show")
+     */
+    public function productsByStory(int $id, StoryRepository $storyRepository)
+    {
+        $story = $storyRepository->find($id);
+
+        if(!$story)
+        {
+            return $this->redirectToRoute("customer_home");
+        }
+
+        return $this->render("customer/story_show.html.twig",[
+            'story' => $story
         ]);
     }
 }

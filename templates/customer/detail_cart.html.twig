@@ -4,7 +4,7 @@
 
 <div class="container py-5">
     <div class="row align-items-center justify-content-center">
-        <div class="col-12">
+        <div class="col-12 mt-5">
             <h3 class="text-center">
                 Mon panier
             </h3>
@@ -14,10 +14,10 @@
             {% include "customer/shared/_messages_flash.html.twig" %}
         </div>
 
-        <div class="col-sm-12 col-md-10 col-lg-8 mt-3">
+        <div class="col-sm-12 col-md-10 col-lg-8 mt-3 mb-5">
 
-            <div class="card">
-                <div class="card-body">
+            <div class="card mb-5">
+                <div class="card-body my-3">
                     {% if detailCart | length > 0 %}
 
                         <div class="table-responsive">
@@ -65,9 +65,14 @@
                         </div>
 
                     {% else %}
-                        <p>Le panier est vide.</p>
-                        <br/>
-                        <a class="btn btn-link border-0 text-white bg-dark">Continuer le shopping</a>
+                        <div class="container py-5">
+                           
+                            <p class="container">Le panier est vide.</p>
+                            <br/>
+                            <a href="{{ path('customer_home') }}" class="btn btn-link border-0 text-white bg-dark">Continuer le shopping</a>
+                            
+                        </div>
+
                     {% endif  %}
                 </div>
             </div>

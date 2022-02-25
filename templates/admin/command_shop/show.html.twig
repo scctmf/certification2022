@@ -1,0 +1,33 @@
+{% extends "customer/base_customer.html.twig" %}
+
+{% block title %}
+	Mes commandes
+{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>N° de commande</th>
+                <td>{{ command_shop.id }}</td>
+            </tr>
+            <tr>
+                <th>Date de la commande</th>
+                <td>{{ command_shop.createdAt ? command_shop.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ command_shop.total | euroPrice}}</td>
+            </tr>
+            <tr>
+                <th>La commande a bien été facturé ?</th>
+                <td>{{ command_shop.isPayed ? 'Oui' : 'Non' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('command_shop_index') }}">Retour</a>
+
+    {{ include('admin/command_shop/_delete_form.html.twig') }}
+{% endblock %}

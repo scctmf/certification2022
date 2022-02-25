@@ -69,9 +69,12 @@
                         <div class="card-body">
                             <h5 class="text-center">{{ product.name }}</h5>
                             <p class="text-center text-primary">{{ product.price | euroPrice }}</p>
+                            <p class="text-center">{{ product.story.content }}</p>
                         </div>
+                          
+                          
                         <div class="card-footer">
-                        <a class="btn btn-info border-0 text-white bg-dark w-100" href="{{ path('customer_product_show',{'id' : product.id }) }}">Consulter</a>
+                        <a class="btn btn-info border-0 text-white bg-dark w-100" href="{{ path('customer_product_show',{'id' : product.id }) }}">Lire la suite</a>
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Category;
+use App\Entity\Story;
 use App\Entity\Product;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -11,6 +12,8 @@ use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 
 class ProductType extends AbstractType
@@ -39,6 +42,21 @@ class ProductType extends AbstractType
                 'placeholder' => '-- Choisir une catégorie --',
                 'class' => Category::class
             ])
+            // ->add('createdAt',DateType::class,[
+                
+            //     'placeholder' => [
+            //         'year' => 'année', 'month' => 'Month', 'day' => 'Day',
+            //     ],
+            //     'label' => 'ajout date'
+                
+            //     ])
+            ->add('story',EntityType::class,[
+                
+                'label' => 'ajout d\'histoire',
+                'class' => Story::class,
+                ])
+            
+   
         ;
     }
 
@@ -46,6 +64,8 @@ class ProductType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Product::class,
+            
+            
         ]);
     }
 }

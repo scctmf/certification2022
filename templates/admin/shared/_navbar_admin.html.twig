@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
   <div class="container-fluid">
   <img src="{{ asset('uploads/images/logo.png') }}" height="50px" width="100px" alt="book">
-    <a class="navbar-brand" href="#">Administration</a>
+    <a class="navbar-brand ps-2" href="#">Administration</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,17 +14,20 @@
           <a class="nav-link" href="{{ path('product_index') }}">Produits</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Clients</a>
+          <a class="nav-link" href="{{ path('story_index') }}">Histoires</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Commandes</a>
+          <a class="nav-link" href="{{ path('admin_user_list') }}">Clients</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('command_shop_index') }}">Commandes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ path('customer_home')  }}">Revenir vers le site</a>
         </li>
         {% include "search/_searchbar.html.twig" %}
 
-        <li class="nav-item">
+        <li class="nav-item pad">
           <a class="nav-link" href="{{ path('app_logout')  }}">Se déconnecter</a>
         </li>
       

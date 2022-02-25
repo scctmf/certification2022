@@ -14,7 +14,7 @@
             <div class="navigation py-2">
                 {{ knp_pagination_render(products) }}
             </div>
-            {% for product in products %}
+            {% for product in products %} {#Pour chaque produit dans le tableau des produits, je veux afficher un produit(variable product ce crée au moment du for, la variable products existe dans le render#}
                 <div class="col-sm-12 col-md-6 col-lg-4 mt-3">
                     <div class="card">
                         <div class="card-header">
@@ -23,6 +23,11 @@
                         <div class="card-body">
                             <h5 class="text-center">{{ product.name }}</h5>
                         </div>
+                       <div class="col-12 mt-3">
+            
+        </div>
+
+               
                         <div class="card-footer">
                             <a class="btn btn-info border-0 text-white bg-dark w-100" href="{{ path('product_edit',{'id' : product.id }) }}">Modifier</a>
                         </div>

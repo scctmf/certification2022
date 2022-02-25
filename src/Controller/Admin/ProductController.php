@@ -30,7 +30,9 @@ class ProductController extends AbstractController
 
         $search = new SearchProduct();
         $form = $this->createForm(SearchProductType::class,$search);
-
+      
+       
+        
         $form->handleRequest($request);
 
         $products = $paginator->paginate(
@@ -52,20 +54,27 @@ class ProductController extends AbstractController
                         HandleImageService $handleImageService): Response
     {
         $product = new Product();
+        
         $form = $this->createForm(ProductType::class, $product);
+        
+
+        
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
             /** @var UploadedFile $file */
             $file = $form->get('file')->getData();
+            
 
             if($file)
             {
                 $handleImageService->save($file,$product);
             }
-
+            
             $entityManager->persist($product);
+            
             $entityManager->flush();
 
             return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
@@ -73,6 +82,7 @@ class ProductController extends AbstractController
 
         return $this->renderForm('admin/product/new.html.twig', [
             'product' => $product,
+          
             'form' => $form,
         ]);
     }

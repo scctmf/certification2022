@@ -9,6 +9,7 @@ use Stripe\Checkout\Session;
 use App\Entity\CommandListProduct;
 use App\MesServices\MailerService;
 use App\Repository\UserRepository;
+use App\Repository\ProductRepository;
 use App\Entity\CommandDeliveryAddress;
 use App\Entity\ContentListCommandShop;
 use App\MesServices\CommandShopService;
@@ -18,6 +19,7 @@ use App\MesServices\CartService\CartService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\MesServices\CartService\CartRealProduct;
+use Doctrine\Common\Collections\Expr\Value;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\LoginLink\LoginLinkHandlerInterface;
 
@@ -68,28 +70,28 @@ class StripeController extends AbstractController
                 $productForStripe
             ],
             'mode' => 'payment',
-              'success_url' => $domain . '/redirectionPaiementReussi/' . $user->getId(),
+              'success_url' => $domain . '/paiementReussi/',
               'cancel_url' => $domain . '/paiementechoue',
           ]);
 
           return $this->redirect($checkout_session->url);
     }
 
-    /**
-     * @Route("/redirectionPaiementReussi/{id}", name="redirection_paiement_reussi")
-     */
-    public function redirectionPaiementReussi(int $id ,LoginLinkHandlerInterface $loginLinkHandler, UserRepository $userRepository, Request $request)
-    {   
-        $user = $userRepository->find($id);
-        $loginLinkDetails = $loginLinkHandler->createLoginLink($user);
-        $loginLink = $loginLinkDetails->getUrl();
-        return $this->redirect($loginLink);
-    }
+    // /**
+    //  * @Route("/redirectionPaiementReussi/{id}/{cart}", name="redirection_paiement_reussi")
+    //  */
+    // public function redirectionPaiementReussi(int $id ,$cart, LoginLinkHandlerInterface $loginLinkHandler, UserRepository $userRepository, Request $request)
+    // {   
+    //     $user = $userRepository->find($id);
+    //     $loginLinkDetails = $loginLinkHandler->createLoginLink($user);
+    //     $loginLink = $loginLinkDetails->getUrl();
+    //     return $this->redirect($loginLink);
+    // }
 
     /**
-     * @Route("/paiementreussi", name="payment_success")
+     * @Route("/paiementReussi", name="payment_success")
      */
-    public function paymentSuccess(CommandShopRepository $commandShopRepository,MailerService $mailerService,EntityManagerInterface $em,
+    public function paymentSuccess(ProductRepository $productRepository, CommandShopRepository $commandShopRepository,MailerService $mailerService,EntityManagerInterface $em,
     CartService $cartService)
     {
         //Je recupere le user
@@ -108,13 +110,23 @@ class StripeController extends AbstractController
 
         //Envoyer un mail au client avec le recap de la commande
         $mailerService->sendCommandMail($user,$command);
-
+        $listeItem = $cartService->getDetailedCartItems();
+        $products = $productRepository->findAll();
         $cartService->emptyCart();
 
         $this->addFlash("success","Votre commande a bien été pris en compte.");
-
-        return $this->redirectToRoute("cart_detail");
+        //dd($listeItem);
+        return $this->render('customer/story.html.twig',[
+            'items' => $listeItem,
+                ]);
     }
+
+    // public function getAllProductFromCart($products, $items){
+    //     $result;
+    //     foreach ($items as $key => $value) {
+    //         if($value->getAllProductFromCart)
+    //     }
+    // }
 
      /**
      * @Route("/paiementechoue", name="payment_cancel")
